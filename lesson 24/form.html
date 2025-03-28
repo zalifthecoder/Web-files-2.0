@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="validate(event)">
+        <fieldset>
+            <legend>Form 1</legend>
+            <label for="email">Email:</label>
+            <input type="email" id="email1">
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="passcode" minlength="8">
+            <br>
+            <label for="age">Age: </label>
+            <input type="number" id="age" min="12" max="60">
+            <br>
+            <button type="submit">Log in.</button>
+
+        </fieldset>
+    </form>
+    <label id="msg"></label>
+    <script>
+        function validate(e) {
+            e.preventDefault();
+            const email = document.getElementById("email1").value;
+            const passcode = document.getElementById("passcode").value;
+            const age = document.getElementById("age").value;
+            const msg = document.getElementById("msg").value;
+            let messagealert = "";
+            if (email == "") {
+                messagealert = "Email is required.";
+                msg.style.color = "red";
+            }
+            else if (passcode == "") {
+                messagealert = "password is required.";
+                msg.style.color = "red";
+            }
+            else if (age == "") {
+                messagealert = "age is required.";
+                msg.style.color = "red";
+            }
+                        else {
+                messagealert = "Logged in successfully.";
+                msg.style.color = "green";
+            }
+            msg.innerText = messagealert;
+        }
+    </script>
+</body>
+
+</html>
