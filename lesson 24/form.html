@@ -24,7 +24,7 @@
 
         </fieldset>
     </form>
-    <label id="msg"></label>
+    <p id="msg"></p>
     <script>
         function validate(e) {
             e.preventDefault();
@@ -35,19 +35,19 @@
             let messagealert = "";
             if (email == "") {
                 messagealert = "Email is required.";
-                msg.style.color = "red";
+                document.getElementById('msg').style.color = 'red';
             }
             else if (passcode == "") {
                 messagealert = "password is required.";
-                msg.style.color = "red";
+                document.getElementById('msg').style.color = 'red';
             }
             else if (age == "") {
                 messagealert = "age is required.";
-                msg.style.color = "red";
+                document.getElementById('msg').style.color = 'red';
             }
-                        else {
+            else {
                 messagealert = "Logged in successfully.";
-                msg.style.color = "green";
+                document.getElementById('msg').style.color = 'green';
             }
             msg.innerText = messagealert;
         }
