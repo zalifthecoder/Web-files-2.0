@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calculating The Students Current Age!</h1>
+    <p id="stu"></p>
+    <script>
+        class student {
+            constructor(name, year){
+                this.name = name;
+                this.year = year;
+
+            }
+            age(){
+                let date = new Date();
+                return date.getFullYear() - this.year;
+            }
+        }
+        s1 = new student("Zalif", 2012);
+        document.getElementById("stu").innerHTML = "The Student's Name is: "+ s1.name +" and The Age Is: "+ s1.age()+" Years Old!";
+    </script>
+</body>
+</html>

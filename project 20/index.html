@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f9;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+video, canvas {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+    </style>
+</head>
+<body>
+        <div class="container">
+            <h1>Camera Capture App</h1>
+            <video id="video" autoplay></video>
+            <button id="capture-btn">Capture Photo</button>
+            <canvas id="canvas"></canvas>
+        </div>
+    <script>
+        // Select HTML elements
+            const video = document.getElementById('video');
+            const canvas = document.getElementById('canvas');
+            const captureButton = document.getElementById('capture-btn');
+            const context = canvas.getContext('2d');
+
+            // Function to start the camera
+            function startCamera() {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then((stream) => {
+                        video.srcObject = stream;
+                    })
+                    .catch((error) => {
+                        console.error("Error accessing the camera: ", error);
+                        alert("Could not access the camera. Please allow permissions and try again.");
+                    });
+            }
+
+            // Function to capture a photo
+            function capturePhoto() {
+                // Set canvas dimensions to match video
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+
+                // Draw the current video frame to the canvas
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            }
+
+            // Start the camera automatically when the page loads
+            window.addEventListener('load', startCamera);
+
+            // Capture photo when button is clicked
+            captureButton.addEventListener('click', capturePhoto);
+    </script>
+</body>
+
+</html>
