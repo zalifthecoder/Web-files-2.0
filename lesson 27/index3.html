@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>evaluating in js</h1>
+    <button onclick="v()">try it!!</button>
+    <p id="res"></p>
+    <script>
+        function v(){
+            var x = 10;
+            var y = 20;
+            var a = eval("x*y")+"<br>";
+            var b = eval("x+y")+"<br>";
+            var c = eval("y/x") + "<br>";
+
+            var d = a+b+c;
+            document.getElementById("res").innerHTML = d;
+
+        }
+    </script>
+</body>
+</html>
